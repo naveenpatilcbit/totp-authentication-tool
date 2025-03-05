@@ -1,0 +1,6 @@
+docker network create monitoring
+
+
+
+docker run --name prometheus --network=monitoring -p 9090:9090 -v ./prometheus.yml:/opt/bitnami/prometheus/conf/prometheus.yml  bitnami/prometheus:latest
+docker run -d --network=monitoring --name=grafana -p 3000:3000 grafana/grafana
